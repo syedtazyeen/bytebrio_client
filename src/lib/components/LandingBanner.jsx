@@ -6,7 +6,7 @@ function LandingBanner({scrollToSection}) {
 
   
   return (
-    <div className="bg-gray-950 h-[calc(100vh-5rem)] md:px-16 px-8 flex justify-center items-center banner-bg">
+    <div className="bg-gray-950 md:h-[calc(100vh-5rem)] h-[calc(100vh-16rem)] md:px-16 px-8 flex justify-center items-center banner-bg">
     <div className="text-left text-white">
       <h1 className="md:text-4xl text-2xl font-semibold">Welcome to ByteBrio!</h1>
       <p className="md:text-lg text-sm my-4 text-gray-400">
