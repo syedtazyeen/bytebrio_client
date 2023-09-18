@@ -32,10 +32,10 @@ function TopBar(props) {
       </div> */}
 
       <div className={`w-full ${isFixed ? "fixed-header" : "fixed-header"}`}>
-        <header className="px-16 h-20 bg-gray-950 bg-opacity-95 shadow-sm  border-b-[1px] border-b-gray-800">
+        <header className="md:px-16 px-8  h-20 bg-gray-950 bg-opacity-95 shadow-sm  border-b-[1px] border-b-gray-800">
           <section className="h-full flex justify-between items-center">
             <div className="flex items-center justify-evenly">
-              <div className="mr-8 text-3xl text-white font-semibold">
+              <div className="mr-8 md:text-3xl text-xl  text-white font-semibold">
                 <span>ByteBrio</span>
               </div>
             </div>

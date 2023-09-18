@@ -37,7 +37,7 @@ function ThumbSection(props) {
   }, []);
 
   return (
-    <div className="mx-16">
+    <div className="md:mx-16 mx-8">
       <div
         ref={props.refId}
         className="flex justify-between items-center text-xl font-bold my-8"
@@ -76,7 +76,7 @@ function ThumbSection(props) {
         <div className="flex flex-wrap">
           {data.slice(startIndex, endIndex).map((article) => {
             return (
-              <div key={article.id} className="w-1/3 p-2">
+              <div key={article.id} className="md:w-1/3 w-full p-2">
                  <ArticleCard {...article} />
               </div>
             );

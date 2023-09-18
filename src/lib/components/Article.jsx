@@ -9,7 +9,7 @@ function ArticleCard(props) {
   return (
     <Link to={`/contents/${itemId}`}>
       <div className="cursor-pointer bg-white border-b-2 border-white hover:border-slate-500 transition duration-300 overflow-hidden">
-        <div className="relative aspect-w-2 aspect-h-1 h-56 overflow-hidden rounded-lg">
+        <div className="relative aspect-w-2 aspect-h-1 md:h-56 h-40 overflow-hidden rounded-lg">
           <img
             src={image}
             alt={title}

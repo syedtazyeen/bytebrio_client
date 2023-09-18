@@ -6,15 +6,15 @@ function LandingBanner({scrollToSection}) {
 
   
   return (
-    <div className="bg-gray-950 h-[calc(100vh-5rem)] px-16 flex justify-center items-center banner-bg">
+    <div className="bg-gray-950 h-[calc(100vh-5rem)] md:px-16 px-8 flex justify-center items-center banner-bg">
     <div className="text-left text-white">
-      <h1 className="text-4xl font-semibold">Welcome to ByteBrio!</h1>
-      <p className="text-lg my-4 text-gray-400">
+      <h1 className="md:text-4xl text-2xl font-semibold">Welcome to ByteBrio!</h1>
+      <p className="md:text-lg text-sm my-4 text-gray-400">
         Explore narratives, perspectives, and insights from authors covering
         a wide array of subjects.
       </p>
       <div className="mt-8">
-        <div onClick={scrollToSection} className="w-fit px-6 py-2 bg-yellow-500 cursor-pointer rounded-full text-black text-lg inline-block">
+        <div onClick={scrollToSection} className="w-fit md:px-6 px-3 md:py-2 py-2 bg-yellow-500 cursor-pointer rounded-full text-black md:text-lg text-sm inline-block">
           <h1>Start Reading</h1>
         </div>
       </div>
