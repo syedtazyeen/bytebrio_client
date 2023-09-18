@@ -23,7 +23,7 @@ function ThumbSection(props) {
 
   useEffect(() => {
     // Define the URL of the API or server endpoint you want to fetch data from
-    const apiUrl = "http://bytebrio-env-1.eba-tzzqqase.ap-south-1.elasticbeanstalk.com"; // Replace with your API endpoint URL
+    const apiUrl = "http://bytebrioserver01-env.eba-qm6vghn3.ap-south-1.elasticbeanstalk.com"; // Replace with your API endpoint URL
 
     // Make a GET request using fetch
     fetch(apiUrl+"/contents")

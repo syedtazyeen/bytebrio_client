@@ -9,9 +9,9 @@ const ContentPage = () => {
 
   useEffect(() => {
     // Replace with the URL of your JSON data
-    const apiUrl = "http://bytebrio-env-1.eba-tzzqqase.ap-south-1.elasticbeanstalk.com"; // Replace with the actual URL
+    const apiUrl = "http://api.bytebrio.online"; // Replace with the actual URL
 
-    fetch(apiUrl + `/contents/articles/${link.itemId}`)
+    fetch(apiUrl + `/contents/${link.itemId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
