@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ArticleCard from "./Article";
 
 import { BiSolidRightArrow, BiSolidLeftArrow } from "react-icons/bi";
-import { Link } from "react-router-dom";
 
 function ThumbSection(props) {
   const itemsPerPage = 3;
