@@ -43,6 +43,8 @@ function TopBar({ openSearchDialog }) {
         <NavList scrollToSection={props.scrollToSection} />
       </div> */}
 
+      
+
       <div className={`w-full ${isFixed ? "fixed-header" : "fixed-header"}`}>
         <header className="md:px-16 px-4  h-20 bg-gray-950 bg-opacity-95 shadow-sm  border-b-[1px] border-b-gray-800">
           <section className="h-full flex justify-between items-center">

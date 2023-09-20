@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AdminLoginPage from './lib/pages/AdminLoginPage';
 import AddPostPage from './lib/pages/AddPostPage';
 import SearchPage from './lib/pages/SearchPage';
+import LoginPage from './lib/pages/LoginPage';
+import CreateQuizPage from './lib/pages/CreateQuizPage';
 
 function App() {
   const isAuthenticated = /* implement your authentication logic here */ false;
@@ -17,6 +19,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/create-quiz" element={<CreateQuizPage />} />
         <Route path="/contents/item/:itemId" element={<ContentPage />} />
         <Route path="/contents/addPost" element={<AddPostPage/>}/>
         <Route path="/search" element={<SearchPage/>}/>

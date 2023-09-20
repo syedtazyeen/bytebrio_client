@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import ScrollHeader from '../components/ScrollHeader';
 import Header from '../components/TopBar';
 import { API_URL } from '../../constants';
 import { RiSendPlaneLine } from 'react-icons/ri'
 import { TfiComments } from 'react-icons/tfi'
+import logo from "../assets/logo.png";
 
 const ContentPage = () => {
   const link = useParams(); // Get the itemId from the URL
@@ -72,6 +73,35 @@ const ContentPage = () => {
     return title
   }
 
+  const [hideDiv, setHideDiv] = useState(false);
+
+  // Add scroll event listener
+  useEffect(() => {
+    let prevScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY + 5) {
+        setHideDiv(true); // Scrolling downward
+      } else if (currentScrollY < prevScrollY) {
+        setHideDiv(false); // Scrolling upward
+      }
+
+      prevScrollY = currentScrollY;
+    };
+
+
+    // Attach the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   return (
     <>
       {isLoading ? (
@@ -85,7 +115,27 @@ const ContentPage = () => {
             data.length != 0 ? (
               <>
                 <div className="bg-gray-100">
-                  <Header />
+
+
+                  {hideDiv ?
+                    <>
+                         <div className={`invisible md:visible  fixed top-0 my-3.5 mx-14 font-google2 flex justify-center md:text-3xl text-xl rounded-3xl  bg-gray-900 w-fit p-2 text-white font-bold ${hideDiv ? 'fade-in-element' : 'fade-out-element'}`}>
+                          <img
+                            src={logo}
+                            className=" md:w-8  w-6 h-6 md:h-8"
+                          />
+                         
+                        </div>
+                    </>
+                    :
+                    (
+                      <div
+                        className={!hideDiv ? 'fade-in-element' : 'fade-out-element'}
+                      >
+                        <Header />
+                      </div>
+                    )
+                  }
                 </div>
                 <div className="max-w-3xl mx-auto px-4 py-8 my-24">
                   {data.map((item) =>
@@ -129,7 +179,7 @@ const ContentPage = () => {
                             <p className="text-gray-950 text-xs font-semibold">{comment.author}</p>
                             <p className="text-gray-800 py-1">{comment.text}</p>
                             <p className="text-gray-600 text-xs ">{comment.date}</p>
-          
+
                           </div>
                         ))}
                         <div className='flex w-fullbg-gray-100 p-4 mt-8 rounded-lg shadow-lg'>

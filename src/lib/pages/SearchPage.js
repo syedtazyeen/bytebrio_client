@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineFilter } from 'react-icons/hi'
+import {AiOutlineClose} from 'react-icons/ai'
 import ArticleCard from "../components/Article";
 import ArticleThumbMobile from "../components/ArticleThumbMobile";
 import { API_URL } from "../../constants";
@@ -57,7 +58,6 @@ function SearchPage() {
 
   return (
     <>
-
       <div className="mx-4 md:mx-auto mt-4 mb-12 flex justify-between items-center px-4 py-2 bg-gray-100 md:w-1/3 rounded-2xl shadow-md">
         <input
           className="bg-transparent outline-none font-google w-full"
@@ -90,16 +90,19 @@ function SearchPage() {
             </div>
           </>
         ) : (
-          data.length != 0 ? (
-            data.slice(startIndex, endIndex).map((article) => (
-              <div key={article.itemId} className="md:inline-block  md:w-1/3 md:p-2 md:mx-8 md:align-top mx-4">
-                {isWideScreen ? (
-                  <ArticleCard {...article} />
-                ) : (
-                  <ArticleThumbMobile {...article} />
-                )}
-              </div>
-            ))
+          <div>
+          {data.length !== 0 ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4">
+              {data.map((article) => (
+                <div key={article.itemId} className="flex flex-wrap">
+                  {isWideScreen ? (
+                    <ArticleCard {...article} />
+                  ) : (
+                    <ArticleThumbMobile {...article} />
+                  )}
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="flex items-center justify-center h-96">
               <img
@@ -108,7 +111,8 @@ function SearchPage() {
                 alt="404"
               />
             </div>
-          )
+          )}
+        </div>
 
         )}
       </div></>
