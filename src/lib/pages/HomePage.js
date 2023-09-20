@@ -45,7 +45,7 @@ function Homepage() {
 
 
   useState(()=>{
-    document.title = "Bytebrio"
+    document.title = "ByteBrio"
   })
 
   return (

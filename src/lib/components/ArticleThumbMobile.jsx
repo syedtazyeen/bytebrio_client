@@ -4,35 +4,18 @@ import { Link } from "react-router-dom";
 function ArticleThumbMobile(props) {
   const { itemId, image, title, subtitle, date, likes } = props;
 
-  function formatDate(inputDate) {
-    const date = new Date(inputDate);
-    const month = date.toLocaleString("default", { month: "short" });
-    const day = date.getDate();
-
-    return `${month} ${day}`;
-  }
-
+  
   function formatDate(milliseconds) {
-    const date = new Date(milliseconds);
-  
-    // Define date options (adjust these as needed)
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZoneName: 'short'
-    };
-  
-    // Format the date
-    return date.toLocaleDateString('en-US', options);
+    var date = parseInt(milliseconds);
+    var d = new Date(date);
+    var ds = d.toLocaleString("default", { month: "short", day: "numeric"});
+    return ds;
   }
+
 
   return (
     <Link to={`/contents/item/${itemId}`}>
-      <div className="mb-16 flex font-google bg-white rounded-md overflow-hidden">
+      <div className="mb-16 flex items-center font-google bg-white rounded-md overflow-hidden">
         <div className="w-full p-0 mr-2">
           <h2 className="text-base font-bold text-gray-800 line-clamp-2">
             {title}
@@ -48,7 +31,7 @@ function ArticleThumbMobile(props) {
           </div>
         </div>
 
-        <div className="aspect-w-1 aspect-h-1 w-48 overflow-hidden rounded-lg">
+        <div className="aspect-w-2 aspect-h-1 w-64 h-24 overflow-hidden rounded-lg">
           <img
             src={image}
             alt=""

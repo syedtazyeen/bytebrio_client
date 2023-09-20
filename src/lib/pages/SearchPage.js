@@ -51,14 +51,14 @@ function SearchPage() {
     inputRef.current.focus()
   })
 
-  useState(()=>{
+  useState(() => {
     document.title = "Search Bytebrio"
   })
 
   return (
     <>
-       
-      <div className="mx-4 md:mx-auto my-4 flex justify-between items-center px-4 py-2 bg-gray-100 md:w-1/3 rounded-2xl">
+
+      <div className="mx-4 md:mx-auto mt-4 mb-12 flex justify-between items-center px-4 py-2 bg-gray-100 md:w-1/3 rounded-2xl shadow-md">
         <input
           className="bg-transparent outline-none font-google w-full"
           placeholder="Search ByteBrio"
@@ -92,7 +92,7 @@ function SearchPage() {
         ) : (
           data.length != 0 ? (
             data.slice(startIndex, endIndex).map((article) => (
-              <div key={article.itemId} className="md:inline-block  md:w-1/3 md:p-2 md:mx-8 md:align-top">
+              <div key={article.itemId} className="md:inline-block  md:w-1/3 md:p-2 md:mx-8 md:align-top mx-4">
                 {isWideScreen ? (
                   <ArticleCard {...article} />
                 ) : (

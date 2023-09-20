@@ -15,7 +15,7 @@ function LandingBanner({ scrollToSection }) {
         <div className="mt-8">
           <div
             onClick={scrollToSection}
-            className="w-fit md:px-8 px-4 md:py-4 py-3 bg-yellow-500 cursor-pointer rounded-full text-black md:text-xl text-base font-semibold inline-block"
+            className="w-fit md:px-8 px-4 md:py-4 py-3 bg-yellow-500 cursor-pointer rounded-full text-black md:text-xl text-base font-semibold inline-block select-none"
           >
             <h1>Start Reading</h1>
           </div>
