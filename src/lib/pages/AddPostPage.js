@@ -120,6 +120,10 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
     }
   };
 
+  useState(() => {
+    document.title = "Add Post"
+  })
+
   return (
     <>
       <TopBar />

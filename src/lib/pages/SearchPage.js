@@ -51,6 +51,10 @@ function SearchPage() {
     inputRef.current.focus()
   })
 
+  useState(()=>{
+    document.title = "Search Bytebrio"
+  })
+
   return (
     <>
        

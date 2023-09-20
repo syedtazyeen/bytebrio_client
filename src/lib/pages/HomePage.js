@@ -43,6 +43,11 @@ function Homepage() {
     setIsSearchDialogOpen(false);
   };
 
+
+  useState(()=>{
+    document.title = "Bytebrio"
+  })
+
   return (
     <>
       <Header scrollToSection={scrollToSection} onOpenSearchDialog={openSearchDialog} />

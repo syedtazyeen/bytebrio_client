@@ -1,7 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import TopBar from '../components/TopBar';
 
+
+
 function EmptyPage() {
+
+
+
+  useState(()=>{
+    document.title = "Not Found"
+  })
+
   return (
     <>
     <TopBar/>
