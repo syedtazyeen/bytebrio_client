@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         google: ['Lato', 'sans-serif'],
-        google2: ['Mooli', 'sans-serif'],
+        google2: ['Space Grotesk', 'sans-serif'],
       },
       height: {
         'banner': '100vh-6rem',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArticleCard from "./Article";
 
 import { BiSolidRightArrow, BiSolidLeftArrow } from "react-icons/bi";
+import ArticleThumbMobile from "./ArticleThumbMobile";
 
 function ThumbSection(props) {
   const itemsPerPage = 3;
@@ -19,39 +20,46 @@ function ThumbSection(props) {
   };
 
   const [data, setData] = useState([]);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 786);
 
   useEffect(() => {
-    // Define the URL of the API or server endpoint you want to fetch data from
-    const apiUrl = "http://api.bytebrio.online"; // Replace with your API endpoint URL
+    const apiUrl = "http://localhost:1000";
 
-    // Make a GET request using fetch
-    fetch(apiUrl+"/contents")
+    fetch(apiUrl + "/contents/latest-items")
       .then((response) => response.json())
       .then((jsonData) => {
-        // Parse the JSON data into JavaScript objects
         setData(jsonData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth >= 786);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <div className="md:mx-16 mx-8">
+    <div className="md:mx-16 mx-4">
       <div
         ref={props.refId}
-        className="flex justify-between items-center text-xl font-bold my-8"
+        className="flex justify-between items-center text-xl font-bold mt-16 mb-8"
       >
         <text>Latest</text>
 
-        <div
+        {/* <div
           ref={props.refId}
           className="flex justify-between items-center text-xl font-bold my-8"
         >
           <div className="flex items-center space-x-4 text-sm">
             <button
               onClick={showPrevPage}
-              className={`bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ${
+              className={`border-[1px] border-gray-800 hover:border-gray-900 text-gray-800 font-bold py-2 px-4 rounded-full ${
                 currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={currentPage === 1}
@@ -61,7 +69,7 @@ function ThumbSection(props) {
             <span>{currentPage}</span>
             <button
               onClick={showNextPage}
-              className={`bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full ${
+              className={`border-[1px] border-gray-800 hover:border-gray-900 text-gray-800 font-bold py-2 px-4 rounded-full ${
                 endIndex >= data.length ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={endIndex >= data.length}
@@ -69,18 +77,36 @@ function ThumbSection(props) {
               <BiSolidRightArrow />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <>
-        <div className="flex flex-wrap">
+        {/* <div className="flex flex-wrap overflow-x-auto whitespace-nowrap">
           {data.slice(startIndex, endIndex).map((article) => {
             return (
-              <div key={article.id} className="md:w-1/3 w-full p-2">
-                 <ArticleCard {...article} />
+              <div key={article.id} className={isWideScreen ? "w-1/3 p-2" : ""}>
+                {isWideScreen ? (
+                  <ArticleCard {...article} />
+                ) : (
+                  <ArticleThumbMobile {...article} />
+                )}
               </div>
             );
           })}
+        </div> */}
+        <div className="md:overflow-x-scroll md:whitespace-nowrap scrollbar-hide">
+          {data.map((article) => (
+            <div
+              key={article.id}
+              className="md:inline-block md:w-1/3 md:p-2 md:align-top"
+            >
+              {isWideScreen ? (
+                <ArticleCard {...article} />
+              ) : (
+                <ArticleThumbMobile {...article} />
+              )}
+            </div>
+          ))}
         </div>
       </>
     </div>

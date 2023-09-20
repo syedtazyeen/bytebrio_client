@@ -1,10 +1,17 @@
 import Header from '../components/TopBar';
 import LandingBanner from '../components/LandingBanner';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import ThumbSection from '../components/ThumbSection';
 import Footer from '../components/Footer';
+import ThumbList from '../components/ThumbList';
+import SearchDialog from '../components/SearchDialog';
+import { API_URL } from "../../constants"
+import Loading from '../components/Loading'
 
 function Homepage() {
+
+  const apiUrl = "http://localhost:1000";
+  const [fetchStatus, setFetchStatus] = useState(false);
 
   const targetSectionRef = useRef(null);
   const scrollToSection = () => {
@@ -21,18 +28,37 @@ function Homepage() {
   };
 
 
+ 
+
+  useState(()=>{
+
+  })
+
+  const [isSearchDialogOpen, setIsSearchDialogOpen] = useState(false);
+  const openSearchDialog = () => {
+    setIsSearchDialogOpen(true);
+  };
+
+  const closeSearchDialog = () => {
+    setIsSearchDialogOpen(false);
+  };
+
   return (
-    <div className='font-google2'>
-      <Header scrollToSection={scrollToSection} />
-      <div className="h-20 w-full bg-black "></div>
-      <LandingBanner scrollToSection={scrollToSection} />
+    <>
+      <Header scrollToSection={scrollToSection} onOpenSearchDialog={openSearchDialog} />
+      {fetchStatus ? (<Loading />) : (<div className='font-google2'>
 
-      <ThumbSection refId={targetSectionRef}/>
+        <div className="h-20 w-full bg-black "></div>
+        <LandingBanner scrollToSection={scrollToSection} />
 
-      <ThumbSection refId={targetSectionRef}/>
+        <ThumbList refId={targetSectionRef} title="Latest" url={API_URL + "/contents/latest-items"} itemsPerPage={5} />
+        <ThumbList title="Recommended" url={API_URL + "/contents/recommended-items"} itemsPerPage={5} />
 
-      <Footer/>
-    </div>
+        <Footer />
+      </div>)}
+
+
+    </>
   );
 }
 

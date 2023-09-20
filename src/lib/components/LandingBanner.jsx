@@ -2,28 +2,26 @@
 
 import React from "react";
 
-function LandingBanner({scrollToSection}) {
-
-  
+function LandingBanner({ scrollToSection }) {
   return (
-    <div className="bg-gray-950 md:h-[calc(100vh-5rem)] h-[calc(100vh-16rem)] md:px-16 px-8 flex justify-center items-center banner-bg">
-    <div className="text-left text-white">
-      <h1 className="md:text-4xl text-2xl font-semibold">Welcome to ByteBrio!</h1>
-      <p className="md:text-lg text-sm my-4 text-gray-400">
-        Explore narratives, perspectives, and insights from authors covering
-        a wide array of subjects.
-      </p>
-      <div className="mt-8">
-        <div onClick={scrollToSection} className="w-fit md:px-6 px-3 md:py-2 py-2 bg-yellow-500 cursor-pointer rounded-full text-black md:text-lg text-sm inline-block">
-          <h1>Start Reading</h1>
+    <div className="bg-gray-950 md:h-[calc(100vh-5rem)] h-[calc(100vh-16rem)] md:px-16 px-4 flex items-center banner-bg">
+      <div className="text-left text-white">
+        <h1 className="md:text-5xl text-3xl font-bold">Welcome to ByteBrio!</h1>
+        <p className="md:text-xl text-lg my-4 text-gray-400">
+          Explore narratives, perspectives, <br />
+          and insights from authors covering
+          <br />a wide array of subjects.
+        </p>
+        <div className="mt-8">
+          <div
+            onClick={scrollToSection}
+            className="w-fit md:px-8 px-4 md:py-4 py-3 bg-yellow-500 cursor-pointer rounded-full text-black md:text-xl text-base font-semibold inline-block"
+          >
+            <h1>Start Reading</h1>
+          </div>
         </div>
       </div>
     </div>
-    
-
-
-  </div>
-  
   );
 }
 
