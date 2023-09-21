@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineFilter } from 'react-icons/hi'
-import {AiOutlineClose} from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai'
 import ArticleCard from "../components/Article";
 import ArticleThumbMobile from "../components/ArticleThumbMobile";
 import { API_URL } from "../../constants";
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 // import { offset, flip, autoUpdate } from '@floating-ui/react-dom';
 
 
-function SearchPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+function SearchPage({searchQuery}) {
+  //const [searchQuery, setSearchQuery] = useState(props.searchQuery);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,16 +49,19 @@ function SearchPage() {
   };
 
   useEffect(() => {
-    inputRef.current.focus()
-  })
+    //inputRef.current.focus()
+    if (searchQuery !== "" || searchQuery !== null) {
+      fetchData()
+    }
+  }, [searchQuery])
 
   useState(() => {
-    document.title = "Search Bytebrio"
+    //document.title = "Search Bytebrio"
   })
 
   return (
     <>
-      <div className="mx-4 md:mx-auto mt-4 mb-12 flex justify-between items-center px-4 py-2 bg-gray-100 md:w-1/3 rounded-2xl shadow-md">
+      {/* <div className="mx-4 md:mx-auto mt-4 mb-12 flex justify-between items-center px-4 py-2 bg-gray-100 md:w-1/3 rounded-2xl shadow-md">
         <input
           className="bg-transparent outline-none font-google w-full"
           placeholder="Search ByteBrio"
@@ -79,40 +82,41 @@ function SearchPage() {
             className="text-xl text-gray-500"
           />
         </div>
+      </div> */}
 
 
-      </div>
       <div className="md:overflow-x-scroll md:whitespace-nowrap scrollbar-hide">
         {isLoading ? (
           <>
             <div className="flex justify-center items-center h-96">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-16 border-b-4 border-yellow-400"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-t-16 border-b-4 border-gray-700"></div>
             </div>
           </>
         ) : (
           <div>
-          {data.length !== 0 ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4">
-              {data.map((article) => (
-                <div key={article.itemId} className="flex flex-wrap">
-                  {isWideScreen ? (
-                    <ArticleCard {...article} />
-                  ) : (
-                    <ArticleThumbMobile {...article} />
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex items-center justify-center h-96">
-              <img
-                src="https://img.freepik.com/premium-vector/file-found-illustration-with-confused-people-holding-big-magnifier-search-no-result_258153-336.jpg"
-                className="w-1/4 p-4"
-                alt="404"
-              />
-            </div>
-          )}
-        </div>
+            <div className="w-full text-center font-google text-lg font-bold mb-6" >Results for "{searchQuery}"</div>
+            {data.length !== 0 ? (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4">
+                {data.map((article) => (
+                  <div key={article.itemId} className="flex flex-wrap">
+                    {isWideScreen ? (
+                      <ArticleCard {...article} />
+                    ) : (
+                      <ArticleThumbMobile {...article} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center h-96">
+                <img
+                  src="https://cdni.iconscout.com/illustration/premium/thumb/no-results-found-5379690-4503302.png?f=webp"
+                  className="w-1/4 p-4"
+                  alt="404"
+                />
+              </div>
+            )}
+          </div>
 
         )}
       </div></>

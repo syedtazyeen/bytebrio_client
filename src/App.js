@@ -11,6 +11,7 @@ import AddPostPage from './lib/pages/AddPostPage';
 import SearchPage from './lib/pages/SearchPage';
 import LoginPage from './lib/pages/LoginPage';
 import CreateQuizPage from './lib/pages/CreateQuizPage';
+import LandingPage from './lib/pages/LandingPage';
 
 function App() {
   const isAuthenticated = /* implement your authentication logic here */ false;
@@ -18,7 +19,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+      <Route path="/" element={<LandingPage />} />
+        <Route path="/blogs" element={<Homepage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-quiz" element={<CreateQuizPage />} />
         <Route path="/contents/item/:itemId" element={<ContentPage />} />
@@ -29,6 +31,7 @@ function App() {
         {/* Catch-all route for all other paths */}
         <Route path="*" element={<EmptyPage />} />
         <Route path="contents/*" element={<EmptyPage />} />
+        
       </Routes>
     </BrowserRouter>
   );

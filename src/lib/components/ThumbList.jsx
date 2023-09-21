@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "./Article";
-import { BiSolidRightArrow, BiSolidLeftArrow } from "react-icons/bi";
+import { ImArrowRight2 } from "react-icons/im";
 import ArticleThumbMobile from "./ArticleThumbMobile";
 import Loading from "./Loading";
 
@@ -32,7 +32,7 @@ function useFetchData(url) {
 
 function ThumbList(props) {
   //alert(props.setFetchStatus)
-  const { title, url, itemsPerPage } = props;
+  const { title, subtitle, url, itemsPerPage } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading } = useFetchData(url);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 786);
@@ -56,16 +56,16 @@ function ThumbList(props) {
 
   return (
     <div className="md:mx-16 mx-4">
-      <div
-        ref={props.refId}
-        className="font-google text-gray-500 flex justify-between items-center text-xl font-bold mt-16 mb-8"
-      >
-        <span>{title}</span>
+      <div ref={props.refId} className="mt-16 mb-8">
+        <div className="font-google text-emerald-600 align-baseline  flex items-center text-2xl font-bold">
+          <span>{title}</span>
+          <ImArrowRight2 className="ml-2 text-xl" />
+        </div>
+        <text className="text-gray-500">{subtitle}</text>
       </div>
       <div className="md:overflow-x-scroll md:whitespace-nowrap scrollbar-hide">
         {isLoading ? (
-        <Loading height={false}/>
-     
+          <Loading height={false} />
         ) : (
           data.slice(startIndex, endIndex).map((article) => (
             <div

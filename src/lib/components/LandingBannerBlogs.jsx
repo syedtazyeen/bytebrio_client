@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 function LandingBanner({ scrollToSection }) {
   return (
-    <div className="w-screen justify-evenly bg-gray-950 md:h-[calc(100vh-0rem)] h-[calc(100vh-16rem)] md:px-16 px-4 flex items-center banner-bg">
+    <div className="w-screen justify-evenly bg-gray-950 md:h-[calc(100vh-5rem)] h-[calc(100vh-16rem)] md:px-16 px-4 flex items-center banner-bg">
       <div className="text-left text-white">
-        <h1 className="md:text-5xl text-3xl font-bold">Welcome to ByteBrio!</h1>
+        <h1 className="md:text-5xl text-3xl font-bold">ByteBrio Resources</h1>
         <p className="md:text-xl text-lg my-4 text-gray-400">
           Explore narratives, perspectives, <br />
           and insights from authors covering
@@ -26,7 +26,7 @@ function LandingBanner({ scrollToSection }) {
         </div>
       </div>
 
-      {/* <Link
+      <Link
         className="invisible md:visible cursor-pointer bg-white w-1/3 py-2  px-4 flex text-black items-center rounded-3xl shadow-xl"
         to="/search"
       >
@@ -45,7 +45,7 @@ function LandingBanner({ scrollToSection }) {
         >
           <AiOutlineSearch className="text-2xl " />
         </div>
-      </Link> */}
+      </Link>
     </div>
   );
 }

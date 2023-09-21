@@ -119,10 +119,10 @@ const ContentPage = () => {
 
                   {hideDiv ?
                     <>
-                         <div className={`invisible md:visible  fixed top-0 my-3.5 mx-14 font-google2 flex justify-center md:text-3xl text-xl rounded-3xl  bg-gray-900 w-fit p-2 text-white font-bold ${hideDiv ? 'fade-in-element' : 'fade-out-element'}`}>
+                         <div className={`invisible md:visible  fixed top-0 mt-3 mx-14 font-google2 flex justify-center md:text-3xl text-xl rounded-3xl  bg-gray-900 w-fit p-2 text-white font-bold ${hideDiv ? 'fade-in-element' : 'fade-out-element'}`}>
                           <img
                             src={logo}
-                            className=" md:w-8  w-6 h-6 md:h-8"
+                            className=" md:w-6  w-6 h-6 md:h-6"
                           />
                          
                         </div>

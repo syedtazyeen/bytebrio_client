@@ -24,7 +24,7 @@ function ArticleCard(props) {
           />
         </div>
         <div className="py-4 font-google whitespace-normal">
-          <h2 className="text-base  font-bold text-gray-800 line-clamp-1">
+          <h2 className="text-lg  font-bold text-gray-800 line-clamp-1">
             {title}
           </h2>
           <p className="text-sm text-gray-500 mb-4 line-clamp-3">
