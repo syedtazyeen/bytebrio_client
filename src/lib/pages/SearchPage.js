@@ -93,12 +93,12 @@ function SearchPage({searchQuery}) {
             </div>
           </>
         ) : (
-          <div>
-            <div className="w-full text-center font-google text-lg font-bold mb-6" >Results for "{searchQuery}"</div>
+          <div className="mx-4">
+            <div className="w-full text-center font-google text-lg font-bold mb-6 text-gray-500" >Results for "{searchQuery}"</div>
             {data.length !== 0 ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mx-4">
+              <div className="md:overflow-x-scroll md:whitespace-nowrap scrollbar-hide">
                 {data.map((article) => (
-                  <div key={article.itemId} className="flex flex-wrap">
+                  <div key={article.itemId} className="md:inline-block  md:w-1/3 md:p-2 md:align-top">
                     {isWideScreen ? (
                       <ArticleCard {...article} />
                     ) : (
@@ -108,10 +108,10 @@ function SearchPage({searchQuery}) {
                 ))}
               </div>
             ) : (
-              <div className="flex items-center justify-center h-96">
+              <div className="flex items-center justify-center md:h-96">
                 <img
                   src="https://cdni.iconscout.com/illustration/premium/thumb/no-results-found-5379690-4503302.png?f=webp"
-                  className="w-1/4 p-4"
+                  className="md:w-1/4 w-1/2 p-4"
                   alt="404"
                 />
               </div>

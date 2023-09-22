@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import TopBar from '../components/TopBar';
+import TopBarWhite from '../components/TopBarWhite';
 
 
 
@@ -13,8 +14,8 @@ function EmptyPage() {
 
   return (
     <>
-    <TopBar/>
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <TopBarWhite/>
+    <div className="flex items-center justify-center h-screen bg-gray-200">
       <div className="bg-white p-4 items-center justify-center rounded-xl p-8">
         <h1 className="text-2xl text-center font-bold text-gray-800">Page Not Found</h1>
         {/* <p className="text-gray-600">Sorry, the page you are looking for does not exist.</p> */}

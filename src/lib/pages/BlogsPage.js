@@ -1,4 +1,4 @@
-import Header from '../components/TopBar';
+import Header from '../components/TopBarWhite';
 import LandingBanner from '../components/LandingBannerBlogs';
 import React, { useEffect, useRef, useState } from 'react';
 import ThumbSection from '../components/ThumbSection';
@@ -10,7 +10,10 @@ import Loading from '../components/Loading'
 import SearchBar from '../components/SearchBar';
 import { IoIosSearch } from "react-icons/io";
 import { AiOutlineClose } from 'react-icons/ai'
+import {MdArrowUpward} from 'react-icons/md'
 import SearchPage from './SearchPage';
+import LoadingBar from 'react-top-loading-bar';
+
 
 function Homepage() {
 
@@ -18,6 +21,8 @@ function Homepage() {
   const [fetchStatus, setFetchStatus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchState, setSearchState] = useState(false)
+  const [scrollUpButtonState, setScrollUpButtonState] = useState(false)
+  const topLoadingRef = useRef(null)
 
   const targetSectionRef = useRef(null);
   const scrollToSection = () => {
@@ -50,26 +55,61 @@ function Homepage() {
     } else {
       setSearchState(true);
     }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY >= 10) {
+        setScrollUpButtonState(true);
+      } else {
+        setScrollUpButtonState(false);
+      }
+    };
+
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
   }, [searchQuery]);
 
   useState(() => {
-    document.title = "ByteBrio Blogs"
-  },[])
+    document.title = "ByteBrio - Blogs"
+  }, [])
 
   const sbt = [
     "Staying Ahead on the Latest Topics and Trends",
     "Interest Personally Chosen by You"
   ]
 
+  const handleUpClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+
+
+
   return (
     <>
+
       <Header scrollToSection={scrollToSection} pageSubtitle="Blogs" onOpenSearchDialog={openSearchDialog} />
+      <LoadingBar color='rgb(6 95 70)' ref={topLoadingRef} />
       {fetchStatus ? (<Loading />) : (<div className='font-google2'>
 
         <div className="h-16 w-full bg-black "></div>
         {/* <LandingBanner scrollToSection={scrollToSection} /> */}
         <div className="flex w-full justify-center items-center rounded-full overflow-hidden">
-          <div className="flex md:w-1/2 w-full px-4 py-2 bg-gray-50 border-none  shadow-xl focus:shadow-lg rounded-full focus:outline-none my-8 mx-4">
+          <div className="flex md:w-1/2 w-full px-4 py-3 bg-gray-50 border-none  shadow-lg focus:shadow-lg rounded-full focus:outline-none my-8 mx-4">
 
             <button className="text-gray-400 p-1 mr-4">
               <IoIosSearch className="text-2xl" />
@@ -94,8 +134,8 @@ function Homepage() {
         {
           searchState ?
             <>
-              <ThumbList refId={targetSectionRef} title="Latest" subtitle={sbt[0]} url={API_URL + "/contents/latest-items"} itemsPerPage={5} />
-              <ThumbList title="Recommended" subtitle={sbt[1]} url={API_URL + "/contents/recommended-items"} itemsPerPage={5} />
+              <ThumbList topLoadingRef={topLoadingRef} refId={targetSectionRef} title="Latest" subtitle={sbt[0]} url={API_URL + "/contents/latest-items"} itemsPerPage={5} />
+              <ThumbList topLoadingRef={topLoadingRef} title="Recommended" subtitle={sbt[1]} url={API_URL + "/contents/recommended-items"} itemsPerPage={5} />
             </> :
             <>
               <SearchPage searchQuery={searchQuery} />
@@ -103,6 +143,14 @@ function Homepage() {
         }
 
         <Footer />
+
+        {scrollUpButtonState ?
+          <button
+            onClick={handleUpClick}
+            className="bg-gray-900 cursor-pointer fixed z-100 bottom-10 right-16 text-white p-2 text-2xl rounded-3xl">
+            <MdArrowUpward />
+          </button> : <></>}
+
       </div>)}
 
 

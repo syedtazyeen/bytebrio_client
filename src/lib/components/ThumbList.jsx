@@ -4,12 +4,13 @@ import { ImArrowRight2 } from "react-icons/im";
 import ArticleThumbMobile from "./ArticleThumbMobile";
 import Loading from "./Loading";
 
-function useFetchData(url) {
+function useFetchData(url,topLoadingRef) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      topLoadingRef.current.continuousStart()
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -21,6 +22,7 @@ function useFetchData(url) {
         console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
+        topLoadingRef.current.complete()
       }
     };
 
@@ -32,9 +34,9 @@ function useFetchData(url) {
 
 function ThumbList(props) {
   //alert(props.setFetchStatus)
-  const { title, subtitle, url, itemsPerPage } = props;
+  const { title, subtitle, url, itemsPerPage,topLoadingRef } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const { data, isLoading } = useFetchData(url);
+  const { data, isLoading } = useFetchData(url,topLoadingRef);
   const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 786);
 
   // Pass isLoading value to the parent component
@@ -57,7 +59,7 @@ function ThumbList(props) {
   return (
     <div className="md:mx-16 mx-4">
       <div ref={props.refId} className="mt-16 mb-8">
-        <div className="font-google text-emerald-600 align-baseline  flex items-center text-2xl font-bold">
+        <div className="font-google text-emerald-500 align-baseline  flex items-center text-2xl font-bold">
           <span>{title}</span>
           <ImArrowRight2 className="ml-2 text-xl" />
         </div>

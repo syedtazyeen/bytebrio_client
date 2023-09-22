@@ -21,7 +21,7 @@ const MenuDropdown = () => {
         {/* Dropdown items */}
         <div className="py-1" role="none">
           <Link
-            to="/contents/addPost"
+            to="/contents/addBlog"
             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-b-[1px] border-b-gray-200"
             role="menuitem"
           >
@@ -29,7 +29,7 @@ const MenuDropdown = () => {
             Create Post
           </Link>
           <Link
-            to="/notfound"
+            to="/login"
             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
             role="menuitem"
           >

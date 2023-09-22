@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants';
-import TopBar from '../components/TopBar';
+import TopBar from '../components/TopBarWhite';
+import { MdAdd } from 'react-icons/md'
 
 const AddPostPage = ({ jsonData, setJsonData }) => {
   const [formData, setFormData] = useState({
@@ -124,11 +125,24 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
     document.title = "Add Post"
   })
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  },[])
+
+  function handleAddClick() {
+
+  }
+
+  const inputFieldClass = "w-full px-4 py-2 border-b focus:outline-none focus:border-gray-500"
+
   return (
     <>
       <TopBar />
       <div className="h-20 w-full "></div>
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen h-full flex items-center justify-center">
         <div className="w-full max-w-3xl p-6 bg-white">
           <h1 className="text-3xl text-center font-google2 font-semibold mb-6">Add New Post</h1>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -174,7 +188,7 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                 className="w-full px-4 py-2 border-b focus:outline-none focus:border-gray-500"
               />
             </div>
-            <div>
+            {/* <div>
               <label className="font-google2 text-gray-700 text-sm font-bold block mb-2">
                 Category:
               </label>
@@ -190,7 +204,7 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
             {/* Dynamic Content Sections */}
             {formData.content.map((section, index) => (
               <div key={index} className="p-4 bg-white border border-gray-300 rounded">
@@ -211,13 +225,11 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                     </div>
                   )}
                   {section.type === 'code' && (
-                    <div>
-                      <pre>
-                        <code className={`language-${section.language}`}>
-                          {section.code}
-                        </code>
-                      </pre>
-                    </div>
+                   <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto">
+                   <code className={`language-${section.language}`}>
+                     {section.code}
+                   </code>
+                 </pre>
                   )}
                 </div>
                 <button
@@ -231,7 +243,13 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
             ))}
             {/* Content Type */}
             <div className="flex space-x-4">
-              <div className="w-1/2">
+              {/* <button
+                onClick={handleAddClick}
+                className="flex items-center bg-emerald-400 cursor-pointer text-white px-4 text-2xl rounded-3xl">
+               
+                <text className='text-lg ml-0'>Add</text>
+              </button> */}
+              <div className="flex justify-between w-full items-center rounded-xl p-4 my-12 bg-gray-100">
                 <label className="font-google2 text-gray-700 text-sm font-bold block mb-2">
                   Content Type:
                 </label>
@@ -239,22 +257,21 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                   name="type"
                   value={currentContent.type}
                   onChange={handleChange2}
-                  className="w-full px-4 py-2 border-b focus:outline-none focus:border-gray-500"
+                  className="w-1/2 px-4 py-2 bg-transparent border-b focus:outline-none focus:border-gray-500"
                 >
                   <option value="text">Text</option>
                   <option value="image">Image</option>
                   <option value="code">Code</option>
                 </select>
-              </div>
-              <div className="w-1/2">
                 <button
-                  type="button"
-                  onClick={addContentSection}
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
-                >
-                  Add Content Section
-                </button>
+                type="button"
+                onClick={addContentSection}
+                className="h-fit place-self-center bg-emerald-500 text-white px-4 py-2 rounded-2xl hover:bg-blue-600 transition duration-300"
+              >
+                Add
+              </button>
               </div>
+              
             </div>
             {/* Content Input Fields */}
             {currentContent.type === 'text' && (
@@ -267,7 +284,8 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                   value={currentContent.text}
                   onChange={handleChange2}
                   onInput={(e) => { e.target.style.height = ""; e.target.style.height = e.target.scrollHeight + "px" }}
-                  className="resize-none w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                  className={inputFieldClass + "resize-none px-4 py-2  focus:outline-none focus:border-gray-500 p-0"}
+                //"resize-none w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
                 />
               </div>
             )}
@@ -318,19 +336,43 @@ const AddPostPage = ({ jsonData, setJsonData }) => {
                 />
               </div>
             )}
-            <div>
+            <div className='w-full justify-center flex'>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                className="bg-emerald-500 text-white px-4 py-2 rounded-2xl hover:bg-emerald-600 transition duration-300"
               >
-                Add Post
+                Upload Post
               </button>
             </div>
           </form>
         </div>
       </div>
+      <button
+        onClick={handleAddClick}
+        className="bg-emerald-400 cursor-pointer fixed z-100 bottom-10 right-16 text-white p-3 text-2xl rounded-3xl">
+        <MdAdd />
+      </button>
+
     </>
   );
 };
 
 export default AddPostPage;
+
+
+const DialogBox = ({ isOpen, onClose, children }) => {
+  return isOpen ? (
+    <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="text-xl font-semibold mb-4">{children}</div>
+
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onClick={onClose}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  ) : null;
+};

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import ScrollHeader from '../components/ScrollHeader';
-import Header from '../components/TopBar';
+import Header from '../components/TopBarWhite';
 import { API_URL } from '../../constants';
 import { RiSendPlaneLine } from 'react-icons/ri'
 import { TfiComments } from 'react-icons/tfi'
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-dark.png";
 
 const ContentPage = () => {
   const link = useParams(); // Get the itemId from the URL
@@ -118,15 +118,16 @@ const ContentPage = () => {
 
 
                   {hideDiv ?
-                    <>
-                         <div className={`invisible md:visible  fixed top-0 mt-3 mx-14 font-google2 flex justify-center md:text-3xl text-xl rounded-3xl  bg-gray-900 w-fit p-2 text-white font-bold ${hideDiv ? 'fade-in-element' : 'fade-out-element'}`}>
-                          <img
-                            src={logo}
-                            className=" md:w-6  w-6 h-6 md:h-6"
-                          />
-                         
-                        </div>
-                    </>
+                    <Link
+                      to='/'>
+                      <div className={`invisible md:visible  fixed top-0 mt-3 mx-14 font-google2 flex justify-center md:text-3xl text-xl rounded-3xl  bg-gray-200 w-fit p-2 text-white font-bold ${hideDiv ? 'fade-in-element' : 'fade-out-element'}`}>
+                        <img
+                          src={logo}
+                          className=" md:w-6  w-6 h-6 md:h-6"
+                        />
+
+                      </div>
+                    </Link>
                     :
                     (
                       <div
@@ -137,10 +138,10 @@ const ContentPage = () => {
                     )
                   }
                 </div>
-                <div className="max-w-3xl mx-auto px-4 py-8 my-24">
+                <div className="font-blogFont text-lg max-w-3xl mx-auto px-4 py-8 my-0">
                   {data.map((item) =>
                   (
-                    <div key={item._id} className="bg-white rounded-lg p-8 mb-8">
+                    <div key={item._id} className="bg-white rounded-lg p-8 mb-8 mt-16">
                       <h1 className="text-4xl font-bold mb-4">{header(item.title)}</h1>
                       <div className="flex justify-between mb-8">
                         <p className="text-gray-600 text-sm"> {formatDate(item.date)}</p>
@@ -169,7 +170,7 @@ const ContentPage = () => {
                         </div>
                       ))}
 
-                      <div className="my-8">
+                      <div className="my-8 font-google">
                         <h2 className="flex  items-center text-lg border-t pt-6 text-gray-500 font-medium mb-4">
                           <TfiComments className='mr-4 text-xl' />
                           Comments</h2>
