@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# ByteBrio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to ByteBrio – the platform for skill swappers and bloggers!
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Skills Exchange**: Find people with the skills you need and offer your skills in return.
 
-### `npm start`
+- **Blogging Platform**: Publish and read blog articles on a wide range of topics.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Community Interaction**: Engage with a vibrant community through forums and discussions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Profiles**: Create profiles to showcase your skills and connect with others.
 
-### `npm test`
+- **Efficient Search**: Quickly discover people, blog articles, and content.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+1. **Sign Up**: Create an account on our website.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Profile Setup**: Customize your profile by adding skills and personal information.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Skills Exchange**: Find people with the skills you want, propose a swap, and start exchanging knowledge.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Blogging**: Write and publish your own blog articles or read those by other members.
 
-### `npm run eject`
+5. **Community Guidelines**: Familiarize yourself with our community guidelines.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

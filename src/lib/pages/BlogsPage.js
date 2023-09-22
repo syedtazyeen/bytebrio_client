@@ -118,7 +118,7 @@ function Homepage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search ByteBrio"
+              placeholder="Search on Bytebrio..."
               className="w-full text-lg border-0 bg-transparent font-google outline-none"
             />
 

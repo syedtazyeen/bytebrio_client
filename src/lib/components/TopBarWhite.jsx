@@ -65,7 +65,7 @@ function TopBarWhite({ openSearchDialog,pageSubtitle }) {
               </Link> */}
               <button
                 onClick={handleMenu}
-                className="bg-slate-700 text-white p-2 ml-4 shadow-sm hover:shadow-xl rounded-full hover:bg-slate-800 focus:outline-none focus:bg-slate-600"
+                className="bg-emerald-500 text-white p-2 ml-4 shadow-sm hover:shadow-xl rounded-full hover:bg-emerald-600 focus:outline-none focus:bg-slate-600"
               >
                 {isMenuOpen ? (
                   <IoIosClose className="text-xl" />
