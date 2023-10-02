@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API_URL } from "../../Constants";
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsDot, BsPatchCheckFill } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
@@ -10,6 +10,7 @@ import HighList from "../components/HighList";
 import { BiArrowBack } from "react-icons/bi";
 
 export default function LogsViewContainer() {
+  const API_URL = "http://api.bytebrio.online"
   const link = useParams();
   const [data, setData] = useState(null);
   const [userData, setUserData] = useState(null);
